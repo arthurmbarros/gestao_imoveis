@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+    ">
+</head>
+<body>
+    <div class="col-8 m-auto pt-2 pb-2 text-center">
+        <h1>Cadastrar inquilinos</h1>
+
+    </div>
+    <div class="col-8 m-auto pt-4 pb-2 text-center" >
+    <div id="result"></div>    
+        <form name="forminquilinos" id="forminquilinos" action="{% if db %}/updateinquilinos/{{db.id}}/{%else%}/createinquilinos/{% endif %}" method="post">
+          {% csrf_token %}
+          <div class="form-group mt-4">Nome: {{forminquilinos.nome}}</div>
+          <div class="form-group mt-4">Escolha o tipo do documento: {{forminquilinos.documento_tipo}}</div>
+          <div class="form-group mt-4">Cpf/Cnpj: {{forminquilinos.cpfcnpj}}</div>
+          <div class="form-group mt-4">Telefone: {{forminquilinos.telefone}}</div><br>
+          <input type="submit" class="btn btn-success " value="Salvar">
+          <a href="/inquilinos" class="btn btn-danger">Voltar</a>
+        </form>
+    </div>
+    <script src="{% static 'jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'jquery.mask.min.js' %}"></script>
+    <script src="{% static 'mascara.js' %}"></script>
+    <script src="{% static 'javascript.js' %}"></script>
+
+</body>
+</html>
